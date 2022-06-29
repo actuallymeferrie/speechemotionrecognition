@@ -84,7 +84,7 @@ def load_image(img_path):
 
 #Modified Algo
 def classify_modified(img_path):
-    model = load_model("DSCNN_ELM500epochsearlystop.h5")
+    model = load_model("Models/ELM500e.h5")
     vector_prediction = model.predict(load_image(img_path))
 
     return vector_prediction
@@ -102,7 +102,7 @@ def modified_predicted_emotion(img_path):
   
 def classify(img_path):
     #baseline model
-    model = load_model("SER_500_epochs_model.h5")
+    model = load_model("Models/500e.h5")
     vector_prediction = model.predict(load_image(img_path))
 
     return vector_prediction
