@@ -14,3 +14,4 @@ simpleaudio
 soundfile
 ffmpeg
 PyOpenGL
+pip
