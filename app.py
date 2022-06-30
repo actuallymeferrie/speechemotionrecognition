@@ -57,11 +57,11 @@ if selected == "Improved Algorithm":
             if predict1:
                 st.markdown("<h4 style='text-align: center;'>Prediction Results</h4>", unsafe_allow_html=True)
                 st.write("Predicted Emotion:  **{}** " 
-                .format(modified_predicted_emotion('mel_spectrogram_1.png').upper()))
+                .format(modified_predicted_emotion('mel_spectrogram_0.png').upper()))
                 st.write("Actual Emotion:  **{}** " 
                 .format(get_actual_emotion(file_audio.name).upper()))
                 
-                var_mod = classify_modified('mel_spectrogram_1.png') * 100
+                var_mod = classify_modified('mel_spectrogram_0.png') * 100
                 
                 df_mod = pd.DataFrame(x, columns=["","Predicted emotion"])
                 df_mod['Percentage'] = var_mod[0]
