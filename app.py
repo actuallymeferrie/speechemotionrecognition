@@ -92,7 +92,7 @@ if selected == "Baseline Algorithm":
     
     with col1:
         if file_audio is not None:
-            predict2 = container2.button("Predict", key = 'improved')
+            predict2 = container2.button("Predict", key = 'bl')
             data_visual(file_audio, 1)
 
     with col2:
