@@ -31,7 +31,7 @@ def createWaveplot(sample, sr, fig_size, algo):
         # st.title("Audio Waveplot")
         st.markdown("<h4 style='text-align: center;'>Audio Waveplot</h4>", unsafe_allow_html=True)
         st.image('audio_waveplot_0.png', caption=' ')
-  else:
+  if(algo == 1):
         plt.savefig('audio_waveplot_1.png',transparent=True,bbox_inches='tight', dpi=72)
         # st.title("Audio Waveplot")
         st.markdown("<h4 style='text-align: center;'>Audio Waveplot</h4>", unsafe_allow_html=True)
@@ -49,7 +49,7 @@ def create_melspectrogram(sample, srate, fig_size, algo):
         # st.title("Mel-Spectrogram")
         st.markdown("<h4 style='text-align: center;'>Mel-Spectrogram</h4>", unsafe_allow_html=True)
         st.image('mel_spectrogram_0.png', caption=' ')
-    else:
+    if(algo == 1):
         plt.savefig('mel_spectrogram_1.png',transparent=True,bbox_inches='tight',pad_inches=0, dpi=72)
         # st.title("Mel-Spectrogram")
         st.markdown("<h4 style='text-align: center;'>Mel-Spectrogram</h4>", unsafe_allow_html=True)
