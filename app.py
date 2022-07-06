@@ -1,27 +1,12 @@
-from streamlit_option_menu import option_menu 
 from setup import *
-import tensorflow as tf
-import pandas as pd
-import IPython.display as ipd
-import librosa, librosa.display
-import os
+
 
 pd.set_option('precision', 2)
-# pd.reset_option('display.float_format')
 
-# st.header("Speech Emotion Recognition")
 local_css("style.css")
 remote_css('https://fonts.googleapis.com/icon?family=Material+Icons')
 
-# with st.sidebar:
-#     st.write("Speech Emotion")
-#     agree = st.checkbox('Use Test file')
-# if agree:
-#     test_audio = "YAF_back_angry.wav"
-#     data_visual_improved(test_audio)
 
-# else:
-# st.header("Speech Emotion Recognition")
 st.markdown("<h4 style='text-align: center; margin-top: -70px'>Speech Emotion Recognizer</h4>", unsafe_allow_html=True)
 st.markdown("<h6 style='text-align: center; margin-top: -40px'>John Ferrie Sarigumba | Raven Joy Tudtud | Steven Badang </h6>", unsafe_allow_html=True)
 container = st.empty()
