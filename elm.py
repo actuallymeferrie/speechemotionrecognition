@@ -40,8 +40,8 @@ for image, label in val_ds.take(1):
   test_labels_batch = label
 
 
-
-hidden_layer_model = Model(inputs = dscnn_model.input , outputs =dscnn_model.layers[15].output )
+layer_name = 'flatten' #name of the last layer
+hidden_layer_model = Model(inputs = dscnn_model.input , outputs = dscnn_model.get_layer(layer_name).output )
 
 dscnn_train_result = hidden_layer_model.predict(train_image_batch)
 st.write("DSCNN TRAIN RESULT",dscnn_train_result)
