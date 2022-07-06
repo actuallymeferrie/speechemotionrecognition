@@ -8,6 +8,12 @@ from tensorflow.keras.preprocessing import image
 from matplotlib import pyplot as plt
 from keras.models import load_model
 from skimage import transform
+import tensorflow as tf
+
+import hpelm
+
+from tensorflow.keras.callbacks import EarlyStopping
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 
 st.set_page_config(
@@ -146,3 +152,17 @@ def icon(icon_name):
 # )
 
 
+def predict_one(test_image_batch):
+  
+  dscnn_elm_result = hidden_layer_model.predict(test_image_batch)
+  predictions = elm_model.predict(dscnn_elm_result)
+
+  print(np.argmax(predictions[55]))
+  print(val_ds.class_names)
+
+  
+  plt.figure(figsize=(10, 10))
+  for images, labels in val_ds.take(1):
+      plt.imshow(images[55].numpy().astype("uint8"))
+      plt.title(val_ds.class_names[labels[55]])
+      plt.axis("off")
