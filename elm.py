@@ -1,4 +1,6 @@
 from setup import *
 
 
-st.write("fuck shit nigga")
+
+
+dscnn_model = tf.keras.models.load_model('Models/500e.h5')
