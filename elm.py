@@ -4,11 +4,11 @@ ELM_HIDDEN_NEURONS  =  20
 audio_file = open('YAF_back_angry.wav', 'rb')
 audio_bytes = audio_file.read()
 st.audio(audio_bytes, format='audio/wav')
-sample, srate = librosa.load(audio_file)
-mel_spectrogram = librosa.feature.melspectrogram(sample, sr=srate, n_fft=2048, hop_length=128, n_mels=256)
-mel_spect = librosa.power_to_db(mel_spectrogram, ref=np.max) 
-mel_spect_resize = cv2.resize(mel_spect, (256, 256))
-image_input = mel_spect_resize
+# sample, srate = librosa.load(audio_file)
+# mel_spectrogram = librosa.feature.melspectrogram(sample, sr=srate, n_fft=2048, hop_length=128, n_mels=256)
+# mel_spect = librosa.power_to_db(mel_spectrogram, ref=np.max) 
+# mel_spect_resize = cv2.resize(mel_spect, (256, 256))
+# image_input = mel_spect_resize
 
 dscnn_model = tf.keras.models.load_model('Models/500e.h5')
 layer_name = 'flatten'
