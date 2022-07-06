@@ -1,9 +1,10 @@
 from setup import *
 NUM_CLASS  =  7
 ELM_HIDDEN_NEURONS  =  20
-audio_file = open('YAF_back_angry.wav', 'rb')
-audio_bytes = audio_file.read()
-st.audio(audio_bytes, format='audio/wav')
+# audio_file = open('YAF_back_angry.wav', 'rb')
+audio_file = 'YAF_back_angry.wav'
+# audio_bytes = audio_file.read()
+# st.audio(audio_bytes, format='audio/wav')
 data_visual(audio_file, 0)
 
 dscnn_model = tf.keras.models.load_model('Models/500e.h5')
