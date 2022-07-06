@@ -1,5 +1,5 @@
 from setup import *
-
+from keras.models import load_model, Sequential, Model
 NUM_CLASS  =  7
 ELM_HIDDEN_NEURONS  =  20
 
