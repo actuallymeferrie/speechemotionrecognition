@@ -1,22 +1,16 @@
 import streamlit as st
-import pandas as pd
-import os
-import cv2
-import hpelm
 import numpy as np
 import librosa, librosa.display
 import tensorflow as tf
-
-import IPython.display as ipd
-
-
+import os
+import cv2
+import csv
 from tensorflow.keras.preprocessing import image
 from matplotlib import pyplot as plt
-from keras.models import load_model, Sequential, Model
+from keras.models import load_model
 from skimage import transform
-from tensorflow.keras.callbacks import EarlyStopping
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
-from streamlit_option_menu import option_menu 
+from keras.models import Sequential, Model
+
 
 st.set_page_config(
      page_title="SER Web App",
@@ -92,25 +86,32 @@ def load_image(img_path):
 
 #Modified Algo
 def classify_modified(img_path):
-    model = load_model("Models/ELM500e.h5")
-    vector_prediction = model.predict(load_image(img_path))
+    dscnn_model = load_model("500e.h5")
+    layer_name = "flatten_1"
+    hidden_layer_model = Model(inputs = dscnn_model.input , outputs = dscnn_model.get_layer(layer_name).output )
+    hidden_layer_result = hidden_layer_model.predict(load_image(img_path))
+    
+    return hidden_layer_result
 
+def elm_classifier(img_path):
+    dscnn_elm_model = load_model("elm_model.h5")
+    vector_prediction = dscnn_elm_model.predict(classify_modified(img_path))
     return vector_prediction
 
-def probabilities_modified(img_path):
-    probabilities = tf.nn.softmax(classify_modified(img_path)).numpy()
+# def probabilities_modified(img_path):
+#     probabilities = tf.nn.softmax(classify_modified(img_path)).numpy()
 
-    return probabilities
+#     return probabilities
 
-def modified_predicted_emotion(img_path):
-    result =  np.argmax(probabilities_modified(img_path))
-    emotion = label(f'{result}')
+# def modified_predicted_emotion(img_path):
+#     result =  np.argmax(probabilities_modified(img_path))
+#     emotion = label(f'{result}')
 
-    return emotion
+#     return emotion
   
 def classify(img_path):
     #baseline model
-    model = load_model("Models/500e.h5")
+    model = load_model("500e.h5")
     vector_prediction = model.predict(load_image(img_path))
 
     return vector_prediction
@@ -154,17 +155,3 @@ def icon(icon_name):
 # )
 
 
-def predict_one(test_image_batch):
-  
-  dscnn_elm_result = hidden_layer_model.predict(test_image_batch)
-  predictions = elm_model.predict(dscnn_elm_result)
-
-  print(np.argmax(predictions[55]))
-  print(val_ds.class_names)
-
-  
-  plt.figure(figsize=(10, 10))
-  for images, labels in val_ds.take(1):
-      plt.imshow(images[55].numpy().astype("uint8"))
-      plt.title(val_ds.class_names[labels[55]])
-      plt.axis("off")
