@@ -19,8 +19,6 @@ st.set_page_config(
  )
 
 
-# improved_model
-# improved_model = load_model("improved.hdf5")
 def createWaveplot(sample, sr, fig_size, algo):
   plt.figure(figsize=fig_size)
   librosa.display.waveplot(sample, sr)
@@ -94,7 +92,7 @@ def classify_modified(img_path):
     return hidden_layer_result
 
 def elm_classifier(img_path):
-    dscnn_elm_model = load_model("Models/elm_model_final.h5")
+    dscnn_elm_model = load_model("Models/elm.h5")
     vector_prediction = dscnn_elm_model.predict(classify_modified(img_path))
     return vector_prediction
 
@@ -146,12 +144,6 @@ def remote_css(url):
 def icon(icon_name):
     st.markdown(f'<i class="material-icons">{icon_name}</i>', unsafe_allow_html=True)
 
-#     
-#     st.write(prediction)
-#     st.write(score)
-#     print(
-#     "This image most likely belongs to {} with a {:.2f} percent confidence."
-#     .format(class_names[np.argmax(score)], 100 * np.max(score))
-# )
+
 
 
