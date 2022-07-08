@@ -86,7 +86,7 @@ def load_image(img_path):
 
 #Modified Algo
 def classify_modified(img_path):
-    dscnn_model = load_model("500e.h5")
+    dscnn_model = load_model("Models/500e.h5")
     layer_name = "flatten_1"
     hidden_layer_model = Model(inputs = dscnn_model.input , outputs = dscnn_model.get_layer(layer_name).output )
     hidden_layer_result = hidden_layer_model.predict(load_image(img_path))
