@@ -94,7 +94,7 @@ def classify_modified(img_path):
     return hidden_layer_result
 
 def elm_classifier(img_path):
-    dscnn_elm_model = load_model("elm_model.h5")
+    dscnn_elm_model = load_model("Models/elm_model_final.h5")
     vector_prediction = dscnn_elm_model.predict(classify_modified(img_path))
     return vector_prediction
 
@@ -111,7 +111,7 @@ def elm_classifier(img_path):
   
 def classify(img_path):
     #baseline model
-    model = load_model("500e.h5")
+    model = load_model("Models/500e.h5")
     vector_prediction = model.predict(load_image(img_path))
 
     return vector_prediction

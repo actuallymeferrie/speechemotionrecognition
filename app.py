@@ -60,23 +60,23 @@ if selected == "Improved Algorithm":
                 # container1.empty()
                 st.markdown("<h4 style='text-align: center;'>Prediction Results</h4>", unsafe_allow_html=True)
              
-                # st.write("Predicted Emotion:  **{}** " 
-                # .format(modified_predicted_emotion('mel_spectrogram_0.png').upper()))
-                # st.write(elm_classifier('mel_spectrogram_0.png'),test_image_batch)
+                st.write("Predicted Emotion:  **{}** " 
+                .format(modified_predicted_emotion('mel_spectrogram_0.png').upper()))
+                st.write(elm_classifier('mel_spectrogram_0.png'),test_image_batch)
 
                 st.write(classify_modified('mel_spectrogram_0.png'))
-                # st.write("Actual Emotion:  **{}** " 
-                # .format(get_actual_emotion(file_audio.name).upper()))
+                st.write("Actual Emotion:  **{}** " 
+                .format(get_actual_emotion(file_audio.name).upper()))
                 
-                # var_mod = classify_modified('mel_spectrogram_0.png') * 100
+                var_mod = classify_modified('mel_spectrogram_0.png') * 100
                 
-                # df_mod = pd.DataFrame(x, columns=["","Predicted emotion"])
-                # df_mod['Percentage'] = var_mod[0]
-                # df_mod['Percentage'] = df_mod['Percentage'].apply(lambda x: float("{:,.2f}".format(x)))
-                # df_mod['.'] = "%"
+                df_mod = pd.DataFrame(x, columns=["","Predicted emotion"])
+                df_mod['Percentage'] = var_mod[0]
+                df_mod['Percentage'] = df_mod['Percentage'].apply(lambda x: float("{:,.2f}".format(x)))
+                df_mod['.'] = "%"
                 
-                # df_mod = df_mod.style.background_gradient()
-                # st.table(df_mod)
+                df_mod = df_mod.style.background_gradient()
+                st.table(df_mod)
         except:
             pass
         
