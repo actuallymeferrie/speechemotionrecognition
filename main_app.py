@@ -1,3 +1,4 @@
+import streamlit as st
 from multiapp import MultiApp
 import app, app_about, app_algo
 
