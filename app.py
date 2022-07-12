@@ -6,7 +6,7 @@ import IPython.display as ipd
 import librosa, librosa.display
 import os
 from multiapp import MultiApp
-
+import streamlit as st
 def app():
     pd.set_option('precision', 2)
 

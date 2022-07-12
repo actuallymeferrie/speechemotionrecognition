@@ -1,5 +1,5 @@
 from multiapp import MultiApp
-
+import streamlit as st
 def app():
     container = st.empty()
     col1, col2 = st.columns(2)
