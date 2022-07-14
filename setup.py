@@ -88,7 +88,7 @@ def load_image(img_path):
 
 #Modified Algo
 def classify_modified(img_path):
-    dscnn_model = load_model("models.1000epochs.h5")
+    dscnn_model = load_model("Models/500e.h5")
     layer_name = "flatten_1"
     hidden_layer_model = Model(inputs = dscnn_model.input , outputs = dscnn_model.get_layer(layer_name).output )
     hidden_layer_result = hidden_layer_model.predict(load_image(img_path))
@@ -96,7 +96,7 @@ def classify_modified(img_path):
     return hidden_layer_result
 
 def elm_classifier(img_path):
-    dscnn_elm_model = load_model("models.elm_model.h5")
+    dscnn_elm_model = load_model("Models/elm.h5")
     vector_prediction = dscnn_elm_model.predict(classify_modified(img_path))
     return vector_prediction
 
