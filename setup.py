@@ -109,7 +109,7 @@ def elm_classifier(img_path):
   
 def classify(img_path):
     #baseline model
-    model = load_model("models/0500epochs.h5")
+    model = load_model("Models/500e.h5")
     vector_prediction = model.predict(load_image(img_path))
 
     return vector_prediction
