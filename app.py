@@ -6,7 +6,7 @@ import IPython.display as ipd
 import librosa, librosa.display
 import os
 from multiapp import MultiApp
-import streamlit as st
+
 def app():
     pd.set_option('precision', 2)
 
@@ -72,14 +72,10 @@ def app():
                     # container1.empty()
                     st.markdown("<h4 style='text-align: center;'>Prediction Results</h4>", unsafe_allow_html=True)
                 
-                    # st.write("Predicted Emotion:  **{}** " 
-                    # .format(modified_predicted_emotion('mel_spectrogram_0.png').upper()))
-                    # st.write(elm_classifier('mel_spectrogram_0.png'),test_image_batch)
+       
 
                     st.write(classify_modified('mel_spectrogram_0.png'))
-                    # st.write("Actual Emotion:  **{}** " 
-                    # .format(get_actual_emotion(file_audio.name).upper()))
-                    
+          
                     # var_mod = classify_modified('mel_spectrogram_0.png') * 100
                     
                     # df_mod = pd.DataFrame(x, columns=["","Predicted emotion"])
@@ -111,8 +107,6 @@ def app():
                     st.write("Predicted Emotion:  **{}** " 
                     .format(baseline_predicted_emotion('mel_spectrogram_1.png').upper()))
 
-                    st.write("Actual Emotion:  **{}** " 
-                    .format(get_actual_emotion(file_audio.name).upper()))
         
                     # st.write("Probability")
                     # st.write(probabilities('mel_spectrogram.png'))
@@ -138,8 +132,6 @@ def app():
                 st.write("Predicted Emotion:  **{}** " 
                 .format(baseline_predicted_emotion('mel_spectrogram_1.png').upper()))
 
-                #st.write("Actual Emotion:  **{}** " 
-                #.format(get_actual_emotion(file_audio.name).upper()))
 
                 # st.write("Probability")
                 # st.write(probabilities('mel_spectrogram.png'))
@@ -158,24 +150,21 @@ def app():
             st.warning("Improved Algorithm")
             if file_audio is not None:
                 st.warning("Processing ...")
-                st.write("Predicted Emotion:  **{}** " 
-                .format(modified_predicted_emotion('mel_spectrogram_0.png').upper()))
+              
 
-                # st.write("Actual Emotion:  **{}** " 
-                # .format(get_actual_emotion(file_audio.name).upper()))
 
-                st.write("Probability")
-                st.write(probabilities('mel_spectrogram.png'))
+                # st.write("Probability")
+                # st.write(probabilities('mel_spectrogram.png'))
                 
-                var = classify_modified('mel_spectrogram_0.png') * 100
+                # var = classify_modified('mel_spectrogram_0.png') * 100
                 
-                df = pd.DataFrame(x, columns=["","Predicted emotion"])
-                df['Percentage'] = var[0]
-                df['Percentage'] = df['Percentage'].apply(lambda x: float("{:,.2f}".format(x)))
-                df['.'] = "%"
+                # df = pd.DataFrame(x, columns=["","Predicted emotion"])
+                # df['Percentage'] = var[0]
+                # df['Percentage'] = df['Percentage'].apply(lambda x: float("{:,.2f}".format(x)))
+                # df['.'] = "%"
                 
-                df = df.style.background_gradient()
-                st.table(df)
+                # df = df.style.background_gradient()
+                # st.table(df)
 
 
 

@@ -10,6 +10,8 @@ from matplotlib import pyplot as plt
 from keras.models import load_model
 from skimage import transform
 from keras.models import Sequential, Model
+from pydub import AudioSegment
+from pydub.utils import make_chunks
 
 
 st.set_page_config(
@@ -19,6 +21,8 @@ st.set_page_config(
  )
 
 
+# improved_model
+# improved_model = load_model("improved.hdf5")
 def createWaveplot(sample, sr, fig_size, algo):
   plt.figure(figsize=fig_size)
   librosa.display.waveplot(sample, sr)
@@ -84,7 +88,7 @@ def load_image(img_path):
 
 #Modified Algo
 def classify_modified(img_path):
-    dscnn_model = load_model("Models/500e.h5")
+    dscnn_model = load_model("models.1000epochs.h5")
     layer_name = "flatten_1"
     hidden_layer_model = Model(inputs = dscnn_model.input , outputs = dscnn_model.get_layer(layer_name).output )
     hidden_layer_result = hidden_layer_model.predict(load_image(img_path))
@@ -92,26 +96,20 @@ def classify_modified(img_path):
     return hidden_layer_result
 
 def elm_classifier(img_path):
-    dscnn_elm_model = load_model("Models/elm.h5")
+    dscnn_elm_model = load_model("models.elm_model.h5")
     vector_prediction = dscnn_elm_model.predict(classify_modified(img_path))
     return vector_prediction
 
+# def probabilities_modified(img_path):
+#     probabilities = tf.nn.softmax(classify_modified(img_path)).numpy()
 
-#edits
-def probabilities_modified(img_path):
-    probabilities = tf.nn.softmax(classify_modified(img_path)).numpy()
+#     return probabilities
 
-    return probabilities
 
-def modified_predicted_emotion(img_path):
-    result =  np.argmax(probabilities_modified(img_path))
-    emotion = label(f'{result}')
-
-    return emotion
   
 def classify(img_path):
     #baseline model
-    model = load_model("Models/500e.h5")
+    model = load_model("models/0500epochs.h5")
     vector_prediction = model.predict(load_image(img_path))
 
     return vector_prediction
@@ -127,14 +125,7 @@ def baseline_predicted_emotion(img_path):
 
     return emotion
 
-def get_actual_emotion(file_name):
-    emotions = ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']
-    for i in emotions:
-        if i in file_name: 
-           file = i
-    
-    return file
-    
+
 
 def local_css(file_name):
     with open(file_name) as f:
@@ -146,6 +137,12 @@ def remote_css(url):
 def icon(icon_name):
     st.markdown(f'<i class="material-icons">{icon_name}</i>', unsafe_allow_html=True)
 
-
+#     
+#     st.write(prediction)
+#     st.write(score)
+#     print(
+#     "This image most likely belongs to {} with a {:.2f} percent confidence."
+#     .format(class_names[np.argmax(score)], 100 * np.max(score))
+# )
 
 
