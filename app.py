@@ -138,8 +138,8 @@ def app():
                 st.write("Predicted Emotion:  **{}** " 
                 .format(baseline_predicted_emotion('mel_spectrogram_1.png').upper()))
 
-                st.write("Actual Emotion:  **{}** " 
-                .format(get_actual_emotion(file_audio.name).upper()))
+                #st.write("Actual Emotion:  **{}** " 
+                #.format(get_actual_emotion(file_audio.name).upper()))
 
                 # st.write("Probability")
                 # st.write(probabilities('mel_spectrogram.png'))
@@ -161,8 +161,8 @@ def app():
                 st.write("Predicted Emotion:  **{}** " 
                 .format(modified_predicted_emotion('mel_spectrogram_0.png').upper()))
 
-                st.write("Actual Emotion:  **{}** " 
-                .format(get_actual_emotion(file_audio.name).upper()))
+                #st.write("Actual Emotion:  **{}** " 
+                #.format(get_actual_emotion(file_audio.name).upper()))
 
                 # st.write("Probability")
                 # st.write(probabilities('mel_spectrogram.png'))
