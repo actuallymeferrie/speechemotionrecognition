@@ -125,13 +125,13 @@ def baseline_predicted_emotion(img_path):
 
     return emotion
 
-def get_actual_emotion(file_name):
-    emotions = ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']
-    for i in emotions:
-        if i in file_name: 
-            file = i
+//def get_actual_emotion(file_name):
+    //emotions = ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']
+    //for i in emotions:
+        //if i in file_name: 
+           // file = i
     
-    return file
+    //return file
     
 
 def local_css(file_name):
