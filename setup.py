@@ -96,16 +96,18 @@ def elm_classifier(img_path):
     vector_prediction = dscnn_elm_model.predict(classify_modified(img_path))
     return vector_prediction
 
-# def probabilities_modified(img_path):
-#     probabilities = tf.nn.softmax(classify_modified(img_path)).numpy()
 
-#     return probabilities
+#edits
+def probabilities_modified(img_path):
+    probabilities = tf.nn.softmax(classify_modified(img_path)).numpy()
 
-# def modified_predicted_emotion(img_path):
-#     result =  np.argmax(probabilities_modified(img_path))
-#     emotion = label(f'{result}')
+    return probabilities
 
-#     return emotion
+def modified_predicted_emotion(img_path):
+    result =  np.argmax(probabilities_modified(img_path))
+    emotion = label(f'{result}')
+
+    return emotion
   
 def classify(img_path):
     #baseline model
